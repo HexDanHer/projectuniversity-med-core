@@ -18,7 +18,6 @@ app.get('/docentes', (req, res) => {
     });
 });
 
-
 app.get('/docentes/:id', (req, res) => {
     const { id } = req.params;
     const sql = 'SELECT * FROM docentes WHERE id = ?';
@@ -33,7 +32,6 @@ app.get('/docentes/:id', (req, res) => {
         res.json(results[0]);
     });
 });
-
 
 app.post('/docentes', (req, res) => {
     const { nombre, correo, telefono, titulo, area_academica, dedicacion, anios_experiencia } = req.body;
@@ -67,7 +65,6 @@ app.post('/docentes', (req, res) => {
     });
 });
 
-
 app.put('/docentes/:id', (req, res) => {
     const { id } = req.params;
     const { nombre, correo, telefono, titulo, area_academica, dedicacion, anios_experiencia } = req.body;
@@ -92,7 +89,6 @@ app.put('/docentes/:id', (req, res) => {
     });
 });
 
-
 app.delete('/docentes/:id', (req, res) => {
     const { id } = req.params;
     const sql = 'DELETE FROM docentes WHERE id=?';
@@ -105,6 +101,8 @@ app.delete('/docentes/:id', (req, res) => {
     });
 });
 
-app.listen(3001, () => {
-    console.log('servidor backend corriendo desde el puerto 3001');
+const PORT = process.env.PORT || 3001;
+
+app.listen(PORT, () => {
+    console.log(`servidor backend corriendo desde el puerto ${PORT}`);
 });
